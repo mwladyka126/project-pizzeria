@@ -92,29 +92,41 @@
     }
 
     initAccordion(){
-      //const thisProduct = this;
+      const thisProduct = this;
 
       /* find the clickable trigger (the element that should react to clicking) */
 
+      const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+
+      console.log(clickableTrigger);
+    
+
       /* START: click event listener to trigger */
+      clickableTrigger.addEventListener('click', function(event){
+        //console.log('clicked');
+      
+        /* prevent default action for event */
+        event.preventDefault();
+ 
+        /* toggle active class on element of thisProduct */
+        clickableTrigger.classList.toggle(classNames.menuProduct.wrapperActive);
+        /* find all active products */
+        const activeProducts = document.querySelectorAll (select.all.menuProductsActive);
+        /* START LOOP: for each active product */
+        for (let activeProduct in activeProducts){
+        
+          /* START: if the active product isn't the element of thisProduct */
+          if (activeProduct !== thisProduct.element){
+            /* remove class active for the active product */
+            activeProduct.classList.remove(classNames.menuProduct.wrapperActive);
+          }
+        }
+        /* END: if the active product isn't the element of thisProduct */
 
-      /* prevent default action for event */
-
-      /* toggle active class on element of thisProduct */
-
-      /* find all active products */
-
-      /* START LOOP: for each active product */
-
-      /* START: if the active product isn't the element of thisProduct */
-
-      /* remove class active for the active product */
-
-      /* END: if the active product isn't the element of thisProduct */
-
-      /* END LOOP: for each active product */
+        /* END LOOP: for each active product */
 
       /* END: click event listener to trigger */
+      });
     }
   }
 
