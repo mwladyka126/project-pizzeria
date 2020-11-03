@@ -187,8 +187,8 @@
           if(optionSelected && !option.default){
           /* add price of option to variable price */
             price += option.price;
-          }
           /* END IF: if option is selected and option is not default */
+          }
           /* START ELSE IF: if option is not selected and option is default */
           else if (!optionSelected && option.default){
           /* deduct price of option from price */
@@ -199,30 +199,39 @@
           //console.log(optionImages);
           if (optionSelected){
             for (let img of optionImages){
-            
-              img.classList.add(classNames.menuProduct.imageVisible);}  
+              img.classList.add(classNames.menuProduct.imageVisible);
+            }  
           } else {
             for (let img of optionImages)
-              img.classList.remove(classNames.menuProduct.imageVisible);}
+              img.classList.remove(classNames.menuProduct.imageVisible);
+          }
         }
       /* END ELSE IF: if option is not selected and option is default */
       }
       /* END LOOP: for each optionId in param.options */
       /* END LOOP: for each paramId in thisProduct.data.params */
-
+      /*mutiply price by amount */
+      price *=thisProduct.amountWidget.value;
       /* set the contents of thisProduct.priceElem to be the value of variable price */
       thisProduct.priceElem.innerHTML = price;       
     }
     initAmountWidget(){
       const thisProduct = this;
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+
+      thisProduct.amountWidgetElem.addEventListener ('update',function(){
+        thisProduct.processOrder();
+      });
     }
   }
   class AmountWidget{
     constructor(element){
       const thisWidget = this;
       thisWidget.getElements(element);
+
+      thisWidget.value = settings.amountWidget.defaultValue;
       thisWidget.setValue(thisWidget.input.value);
+      thisWidget.initActions();
 
       console.log('AmountWidget:', thisWidget);
       console.log('constructor arguments:' , element);
@@ -242,8 +251,10 @@
 
       const newValue = parseInt (value);
       /*TODO: Add validation*/
-
-      thisWidget.value = newValue;
+      if (newValue !=thisWidget.value && newValue>=settings.amountWidget.defaultMin && newValue<=settings.amountWidget.defaultMax){
+        thisWidget.value = newValue;
+        thisWidget.announce();
+      }
       thisWidget.input.value = thisWidget.value;
     }
 
@@ -263,6 +274,13 @@
         event.preventDefault();
         thisWidget.setValue(thisWidget.value+1);
       });
+    }
+
+    announce(){
+      const thisWidget = this;
+
+      const event = new Event ('updated');
+      thisWidget.element.dispatchEvent (event);
     }
   }
 
