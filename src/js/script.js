@@ -325,7 +325,9 @@
     announce(){
       const thisWidget = this;
 
-      const event = new Event ('updated');
+      const event = new CustomEvent ('updated',{
+        bubbles: true
+      });
       thisWidget.element.dispatchEvent (event);
     }
   }
@@ -353,12 +355,20 @@
       thisCart.dom.toggleTrigger =element.querySelector(select.cart.toggleTrigger);
       thisCart.dom.productList =element.querySelector(select.cart.productList);
       //console.log(thisCart.dom.toggleTrigger);
+      thisCart.renderTotalsKeys = ['totalNumber', 'totalPrice', 'subtotalPrice', 'deliveryFee'];
+
+      for(let key of thisCart.renderTotalsKeys){
+        thisCart.dom[key] = thisCart.dom.wrapper.querySelectorAll(select.cart[key]);
+      }
     }
 
     initActions(){
       const thisCart = this; 
       thisCart.dom.toggleTrigger.addEventListener('click',function(){
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
+      });
+      thisCart.dom.productList.addEventListener('update',function(){
+        thisCart.update();
       });
     }
     add(menuProduct){
@@ -387,9 +397,14 @@
         thisCart.totalNumber += product.amount;
       }
       thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
-      console.log('thisCart.totalNumber:',thisCart.totalNumber);
-      console.log('thisCart.totalPrice:',thisCart.totalPrice);
-      console.log('thisCart.subtotalPrice:',thisCart.sutotalPrice);
+      //console.log('thisCart.totalNumber:',thisCart.totalNumber);
+      //console.log('thisCart.totalPrice:',thisCart.totalPrice);
+      //console.log('thisCart.subtotalPrice:',thisCart.sutotalPrice);
+      for(let key of thisCart.renderTotalsKeys){
+        for(let elem of thisCart.dom[key]){
+          elem.innerHTML = thisCart[key];
+        }
+      }
     }
   }
 
