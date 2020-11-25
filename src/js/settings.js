@@ -65,7 +65,8 @@ export const select = {
     tables: '.floor-plan .table',
     starters: '[name="starter"]',
     phone: '.order-confirmation [name="phone"]',
-    address: '. order-confirmation [name="address"]',
+    address: '.order-confirmation [name="address"]',
+    form: '.booking-form',
   },
   nav: {
     links: '.main-nav a',

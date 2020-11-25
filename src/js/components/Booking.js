@@ -92,7 +92,7 @@ class Booking{
     }
 
     //console.log('thisBooking.booked',thisBooking.booked);
-    thisBooking.booked.updateDOM();
+    thisBooking.updateDOM();
   }
 
   makeBooked(date,hour,duration,table){
@@ -172,10 +172,10 @@ class Booking{
       hour: thisBooking.hourPicker.value,
       table:thisBooking.clickedTable,
       duration:thisBooking.dom.hoursAmount.value,
-      people:thisBooking.dom.peopleAmount,
+      people:thisBooking.dom.peopleAmount.value,
       starters:[],
-      phone:thisBooking.dom.phone,
-      address:thisBooking.dom.address,
+      phone:thisBooking.dom.phone.value,
+      address:thisBooking.dom.address.value,
     };
 
     for (let starter of thisBooking.dom.starters){
@@ -218,7 +218,8 @@ class Booking{
     thisBooking.dom.tables = bookingWidgetWrapper.querySelectorAll(select.booking.tables);
     thisBooking.dom.starters = bookingWidgetWrapper.querySelectorAll(select.booking.starters);
     thisBooking.dom.phone =bookingWidgetWrapper.querySelector(select.booking.phone);
-    thisBooking.dom.adress =bookingWidgetWrapper.querySelector(select.booking.adress);
+    thisBooking.dom.address =bookingWidgetWrapper.querySelector(select.booking.address);
+    thisBooking.dom.form=bookingWidgetWrapper.querySelector(select.booking.form);
 
   }
   initWidgets(){
@@ -231,6 +232,10 @@ class Booking{
 
     thisBooking.dom.wrapper.addEventListener('updated', function(){
       thisBooking.updateDOM();
+    });
+    thisBooking.dom.form.addEventListener('submit',function(){
+      event.preventDefault();
+      thisBooking.sendOrder();
     });
   }   
 }
