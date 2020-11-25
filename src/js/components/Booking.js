@@ -152,13 +152,23 @@ class Booking{
     const tables=thisBooking.dom.tables;
 
     for (let table of tables){
-      if (!table.classList.contains(classNames.booking.tableBooked)){
+      if (
+        !table.classList.contains(classNames.booking.tableBooked)
+        &&
+        !table.classList.contains(classNames.booking.tableClicked)
+      ){     
         table.addEventListener('click',function(){
-          table.classList.add(classNames.booking.tableBooked);
-
+          table.classList.add(classNames.booking.tableClicked);
+          table.classList.toggle(classNames.booking.tableBooked);
+          
           let tableId = table.getAttribute(settings.booking.tableIdAttribute);
+          if (!isNaN(tableId)){
+            tableId=parseInt(tableId);
+          }
           thisBooking.clickedTable=tableId;
-        });
+        });        
+      }else{
+        alert('not availabe');
       }
     }
   }
