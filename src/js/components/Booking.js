@@ -181,8 +181,8 @@ class Booking{
       date: thisBooking.datePicker.value,
       hour: thisBooking.hourPicker.value,
       table:thisBooking.clickedTable,
-      duration:thisBooking.dom.hoursAmount.value,
-      people:thisBooking.dom.peopleAmount.value,
+      duration:thisBooking.hoursAmount.value,
+      people:thisBooking.peopleAmount.value,
       starters:[],
       phone:thisBooking.dom.phone.value,
       address:thisBooking.dom.address.value,
@@ -209,9 +209,8 @@ class Booking{
       })
       .then(function(parsedResponse){
         console.log('parsedResponse',parsedResponse);
+        thisBooking.getData();
       });
-
-    thisBooking.getData();
   }
 
   render(bookingWidgetWrapper){
