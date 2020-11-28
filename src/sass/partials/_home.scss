@@ -1,4 +1,5 @@
 /*Globals*/
+
 .home-wrapper {
   margin: 42px auto;
   padding: 72px 48px;
@@ -7,7 +8,51 @@
   border-radius: 4px;
 }
 
-.link-wrapper{
-  display: inline-block;
+.intro.container {
+  justify-content: center;
+  display: flex;
+  flex: 2;
 }
 
+.order-link-wrapper{
+  text-align: center;
+  background-image: url("../../images/assets/pizza-1.jpg");
+}
+
+.booking-link-wrapper{
+  text-align: center;
+  background-image: url("../../images/assets/pizza-2.jpg");
+}
+
+.hours-wrapper{
+  text-align: center;
+  background-color: $color-main;
+
+}
+
+a{
+  text-decoration: none;
+  margin: 10px;
+  color: $color-light;
+}
+  
+/*slider*/
+#carousel {
+  margin-top: 80px;
+}
+
+.carousel-item .card {
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px,;
+}
+
+/*gallery*/
+
+.galery {
+  margin-top: 80px;
+  display:flex;
+  justify-content: center;
+  background-color: red;
+  
+}

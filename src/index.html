@@ -11,9 +11,10 @@
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
     integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+  <!---<link rel="stylesheet" href="vendor/bootstrap-grid.css">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">-->
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -73,111 +74,123 @@
       <div class="home-wrapper">
         <div class="intro container">
           <div class="row">
-            <div class="col-md-6 link-wrapper">
+            <div class="col-md-6 order-link-wrapper">
               <a href="#order">
                 <h2 class="link-title">ORDER ONLINE</h2>
                 <p> Delicious food delivered to your door</p>
               </a>
             </div>
-            <div class="col-md-6 link-wrapper">
+            <div class="col-md-6 booking-link-wrapper">
               <a href="#booking">
                 <h2 class="link-title">BOOK A TABLE</h2>
                 <p>Come to our restaurant</p>
               </a>
             </div>
-            <div class="col-md-6 hours-wrapper">
-              <h2 class="link title"> OPENING HOURS</h2>
-              <p>MON-SUN, 12PM-11PM</p>
+            <div class="col hours-wrapper">
+              <a href="#hours">
+                <h2 class="link title"> OPENING HOURS</h2>
+                <p>MON-SUN, 12PM-11PM</p>
+              </a>
             </div>
           </div>
         </div>
-        <div class="container">
-          <div class="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item">
-                <div class="img">
-                  <img src="images/assets/pizza-1.jpg" alt=".." title="..">
-                </div>
-                <div class="opinion-description">
-                  <h2 class="title">Best pizza ever</h2>
-                  <p>In quis rhoncus enim. Integer tristique tristique lorem vel eleifend. Ut risus ex, dapibus ut
-                    tempor
-                    non, porta id mi. Pellentesque accumsan et turpis non tincidunt.</p>
-                </div>
+
+
+        <div id="carousel" class="carousel slide container" data-ride="carousel">
+          <div class="col carousel-inner">
+            <div class="carousel-item active">
+
+              <div class="col-md-4 card">
+                <img class="card-img-left" src="images/assets/pizza-1.jpg">
+              </div>
+              <div class="col-md-8 card-body">
+                <h2 class="card-title">Best pizza ever</h2>
+                <p class="card-text">In quis rhoncus enim. Integer tristique tristique lorem vel eleifend. Ut risus ex,
+                  dapibus ut
+                  tempor
+                  non, porta id mi. Pellentesque accumsan et turpis non tincidunt.</p>
               </div>
             </div>
-            <div class="carousel-inner">
-              <div class="carousel-item">
-                <div class="img">
-                  <img src="images/assets/pizza-2.jpg" alt=".." title="..">
-                </div>
-                <div class="opinion-description">
-                  <h2 class="title">Cosy place</h2>
-                  <p>In quis rhoncus enim. Integer tristique tristique lorem vel eleifend. Ut risus ex, dapibus ut
-                    tempor
-                    non, porta id mi. Pellentesque accumsan et turpis non tincidunt.</p>
-                </div>
+
+            <div class="carousel-item">
+              <div class="col-md-4 card">
+                <img class="card-img-left" src="images/assets/pizza-2.jpg">
+              </div>
+              <div class="col-md-8 card-body">
+                <h2 class="card-title">Cosy place</h2>
+                <p class="card-text">In quis rhoncus enim. Integer tristique tristique lorem vel eleifend. Ut risus ex,
+                  dapibus ut
+                  tempor
+                  non, porta id mi. Pellentesque accumsan et turpis non tincidunt.</p>
               </div>
             </div>
-            <div class="carousel-inner">
-              <div class="carousel-item">
-                <div class="img">
-                  <img src="images/assets/pizza-3.jpg" alt=".." title="..">
-                </div>
-                <div class="opinion-description">
-                  <h2 class="title">Real italian flavour</h2>
-                  <p>In quis rhoncus enim. Integer tristique tristique lorem vel eleifend. Ut risus ex, dapibus ut
-                    tempor
-                    non, porta id mi. Pellentesque accumsan et turpis non tincidunt.</p>
-                </div>
+
+            <div class="carousel-item">
+              <div class="col-md-4 card">
+                <img class="card-img-left" src="images/assets/pizza-3.jpg">
+              </div>
+              <div class="col-md-8 card-body">
+                <h2 class="card-title">Real italian flavour</h2>
+                <p class="card-text">In quis rhoncus enim. Integer tristique tristique lorem vel eleifend. Ut risus ex,
+                  dapibus ut
+                  tempor
+                  non, porta id mi. Pellentesque accumsan et turpis non tincidunt.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="galery">
+
+        <div class="galery container">
           <div class="row">
-            <div class="image-wrapper">
-              <img src="images/assets/pizza-4.jpg" alt=".." title="..">
-              <div class="icon-wrapper">
-                <i class="fas fa-heart"></i>
-                <i class="fas fa-share-alt"></i>
-              </div>
+            <div class="col-md-12 image-wrapper">
+
+              <figure class="col-md-4">
+                <img src="images/assets/pizza-4.jpg">
+                <div class="icon-wrapper">
+                  <i class="fas fa-heart"></i>
+                  <i class="fas fa-share-alt"></i>
+                </div>
+              </figure>
+              <figure class="col-md-4">
+                <img src="images/assets/pizza-5.jpg">
+                <div class="icon-wrapper">
+                  <i class="fas fa-heart"></i>
+                  <i class="fas fa-share-alt"></i>
+                </div>
+              </figure>
+              <figure class="col-md-4">
+                <img src="images/assets/pizza-6.jpg">
+                <div class="icon-wrapper">
+                  <i class="fas fa-heart"></i>
+                  <i class="fas fa-share-alt"></i>
+                </div>
+              </figure>
             </div>
-            <div class="image-wrapper">
-              <img src="images/assets/pizza-5.jpg" alt=".." title="..">
-              <div class="icon-wrapper">
-                <i class="fas fa-heart"></i>
-                <i class="fas fa-share-alt"></i>
-              </div>
-            </div>
-            <div class="image-wrapper">
-              <img src="images/assets/pizza-6.jpg" alt=".." title="..">
-              <div class="icon-wrapper">
-                <i class="fas fa-heart"></i>
-                <i class="fas fa-share-alt"></i>
-              </div>
-            </div>
-            <div class="image-wrapper">
-              <img src="images/assets/pizza-7.jpg" alt=".." title="..">
-              <div class="icon-wrapper">
-                <i class="fas fa-heart"></i>
-                <i class="fas fa-share-alt"></i>
-              </div>
-            </div>
-            <div class="image-wrapper">
-              <img src="images/assets/pizza-8.jpg" alt=".." title="..">
-              <div class="icon-wrapper">
-                <i class="fas fa-heart"></i>
-                <i class="fas fa-share-alt"></i>
-              </div>
-            </div>
-            <div class="image-wrapper">
-              <img src="images/assets/pizza-9.jpg" alt=".." title="..">
-              <div class="icon-wrapper">
-                <i class="fas fa-heart"></i>
-                <i class="fas fa-share-alt"></i>
-              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 image-wrapper">
+              <figure class="col-md-4">
+                <img src="images/assets/pizza-7.jpg">
+                <div class="icon-wrapper">
+                  <i class="fas fa-heart"></i>
+                  <i class="fas fa-share-alt"></i>
+                </div>
+              </figure>
+              <figure class="col-md-4">
+                <img src="images/assets/pizza-7.jpg">
+                <div class="icon-wrapper">
+                  <i class="fas fa-heart"></i>
+                  <i class="fas fa-share-alt"></i>
+                </div>
+              </figure>
+              <figure class="col-md-4">
+                <img src="images/assets/pizza-9.jpg">
+                <div class="icon-wrapper">
+                  <i class="fas fa-heart"></i>
+                  <i class="fas fa-share-alt"></i>
+                </div>
+              </figure>
             </div>
           </div>
         </div>
@@ -372,7 +385,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js"></script>
-  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
