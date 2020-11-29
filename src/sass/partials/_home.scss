@@ -10,12 +10,12 @@
 
 .intro.container {
   justify-content: center;
-  display: flex;
-  flex: 2;
+  
 }
 
 .order-link-wrapper{
   text-align: center;
+  
   background-image: url("../../images/assets/pizza-1.jpg");
 }
 
@@ -35,24 +35,63 @@ a{
   margin: 10px;
   color: $color-light;
 }
-  
+a:hover{
+  text-decoration: none;
+  margin: 10px;
+  color: $color-light;
+}
 /*slider*/
 #carousel {
   margin-top: 80px;
 }
 
-.carousel-item .card {
-  height: 100%;
-  object-fit: cover;
-  border-radius: 5px,;
+.carousel-item{
+  display:flex;
 }
+.card-img{
+    width: 190px;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 5px;
+
+}
+
 
 /*gallery*/
 
-.galery {
+.gallery {
   margin-top: 80px;
-  display:flex;
+  display: flex;
   justify-content: center;
-  background-color: red;
+ 
+}
+
+.first-row, .second-row{
+  flex: none;
+  display: inline-flex;
+}  
+
+.gallery-item{
+  display:flex;
   
+  img{
+    width: 190px;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 5px;
+    
+  }
+}
+.icon-wrapper{
+  
+  i{
+    color: $color-light;
+    font-size: 20px;
+    padding: 4px;
+    
+  }
+}
+.home-page-footer {
+  color: #ff6b6b;
+  text-align:center;
 }
