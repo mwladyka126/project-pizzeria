@@ -12,7 +12,10 @@
   justify-content: center;
   
 }
-
+.subtitle {
+  color: $color-light;
+  font-size: 100px;
+}
 .order-link-wrapper{
   text-align: center;
   
@@ -24,36 +27,86 @@
   background-image: url("../../images/assets/pizza-2.jpg");
 }
 
+
 .hours-wrapper{
   text-align: center;
   background-color: $color-main;
-
 }
 
-a{
+
+
+
+.btn{
   text-decoration: none;
   margin: 10px;
   color: $color-light;
+  position: relative;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  .link-title{    
+    text-transform: uppercase;  
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    line-height: 106px;
+    transition: top $time;
+  }
+  .link-title:after{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height:106px;
+    background-color: $color-red;
+    content: "Click!";
+    transition: top $time;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  &:hover::after{ top: 0; }
+  &:hover > .link-title{ top: -100%; }
+  
 }
-a:hover{
-  text-decoration: none;
-  margin: 10px;
-  color: $color-light;
-}
+
+
 /*slider*/
 #carousel {
   margin-top: 80px;
 }
 
 .carousel-item{
-  display:flex;
+  display: inline-flex;
+}
+.card-horizontal {
+  display: inline-flex;
+  flex: 1 1 auto;
 }
 .card-img{
-    width: 190px;
-    height: 190px;
-    object-fit: cover;
-    border-radius: 5px;
+  width: 190px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 5px;
+}
 
+.carousel-indicators li {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: #999 !important;
+  background-color: rgba(70,70,70,.25) !important;
+}
+.carousel-indicators {
+  bottom: -50px;
 }
 
 
@@ -69,29 +122,37 @@ a:hover{
 .first-row, .second-row{
   flex: none;
   display: inline-flex;
-}  
+ }  
 
 .gallery-item{
-  display:flex;
+  display: flex;
   
   img{
     width: 190px;
     height: 190px;
     object-fit: cover;
     border-radius: 5px;
-    
+    margin: 5px;
   }
+   
+  img:hover{
+    opacity: 0.7;
+  }  
 }
+
 .icon-wrapper{
-  
   i{
     color: $color-light;
     font-size: 20px;
     padding: 4px;
     
   }
+  i:hover{
+    color: red;
+  }
 }
+
 .home-page-footer {
   color: #ff6b6b;
-  text-align:center;
+  text-align: center;
 }
