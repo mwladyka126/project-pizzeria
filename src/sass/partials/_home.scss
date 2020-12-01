@@ -17,13 +17,15 @@
   padding: 15px 0 0 0;
  
   &:hover .link-title{
-  transform: translateY(-30px); 
+    transform: translateY(-30px); 
   }
+
   &:hover .subtitle{
-  transform: translateY(-30px);
-  opacity: 1;
+    transform: translateY(-30px);
+    opacity: 1;
   }
 }
+
 .order {
   background-image: url("../../images/assets/pizza-1.jpg");
   border-right: 2px solid  white;
@@ -96,7 +98,7 @@
 /*gallery*/
 
 .gallery {
-  margin-top: 80px;  
+  margin-top: 80px;
   justify-content: center; 
 }
 
@@ -134,6 +136,6 @@
 }
 
 .home-page-footer {
-  color:$color-main;
+  color: $color-main;
   text-align: center;
 }
