@@ -9,88 +9,71 @@
 }
 
 .intro.container {
-  justify-content: center;
-  
+  justify-content: center;  
 }
-.subtitle {
-  color: $color-light;
-  font-size: 100px;
-}
-.order-link-wrapper{
+
+.link-wrapper{
   text-align: center;
-  
+  padding: 15px 0 0 0;
+ 
+  &:hover .link-title{
+  transform: translateY(-30px); 
+  }
+  &:hover .subtitle{
+  transform: translateY(-30px);
+  opacity: 1;
+  }
+}
+.order {
   background-image: url("../../images/assets/pizza-1.jpg");
+  border-right: 2px solid  white;
 }
 
-.booking-link-wrapper{
-  text-align: center;
+.booking {
   background-image: url("../../images/assets/pizza-2.jpg");
+  border-left: 2px solid  white;
 }
 
+
+.btn{
+  text-decoration: none;
+}
+
+.link-title{
+  color: $color-light;
+  margin: 10px;
+  transition: $transition;
+}
+
+.subtitle{
+  color: $color-light;
+  opacity: 0;
+  transition: $transition;
+}
 
 .hours-wrapper{
   text-align: center;
   background-color: $color-main;
 }
 
-
-
-
-.btn{
-  text-decoration: none;
-  margin: 10px;
+.link-title-hours{
   color: $color-light;
-  position: relative;
-  border: 0;
-  padding: 0;
-  overflow: hidden;
-  .link-title{    
-    text-transform: uppercase;  
-    color: #fff;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    line-height: 106px;
-    transition: top $time;
-  }
-  .link-title:after{
-    position: absolute;
-    top: 100%;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    line-height:106px;
-    background-color: $color-red;
-    content: "Click!";
-    transition: top $time;
-    font-size: 14px;
-    font-weight: 700;
-    color: #fff;
-    text-transform: uppercase;
-  }
-
-  &:hover::after{ top: 0; }
-  &:hover > .link-title{ top: -100%; }
-  
 }
 
+.subtitle-hours {
+  color: $color-light;
+}
 
 /*slider*/
 #carousel {
   margin-top: 80px;
 }
 
-.carousel-item{
-  display: inline-flex;
-}
 .card-horizontal {
   display: inline-flex;
   flex: 1 1 auto;
 }
+
 .card-img{
   width: 190px;
   height: 190px;
@@ -105,24 +88,21 @@
   background-color: #999 !important;
   background-color: rgba(70,70,70,.25) !important;
 }
+
 .carousel-indicators {
   bottom: -50px;
 }
 
-
 /*gallery*/
 
 .gallery {
-  margin-top: 80px;
-  display: flex;
-  justify-content: center;
- 
+  margin-top: 80px;  
+  justify-content: center; 
 }
 
 .first-row, .second-row{
-  flex: none;
   display: inline-flex;
- }  
+}  
 
 .gallery-item{
   display: flex;
@@ -147,12 +127,13 @@
     padding: 4px;
     
   }
+
   i:hover{
-    color: red;
+    color: $color-main;
   }
 }
 
 .home-page-footer {
-  color: #ff6b6b;
+  color:$color-main;
   text-align: center;
 }
