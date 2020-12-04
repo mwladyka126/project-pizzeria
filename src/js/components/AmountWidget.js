@@ -52,8 +52,13 @@ class AmountWidget extends BaseWidget{
     });
 
     thisWidget.dom.linkIncrease.addEventListener('click', function(event){
-      event.preventDefault();
-      thisWidget.setValue(thisWidget.value+1);
+      if (thisWidget.dom.linkDecrease.classList.contains('hours')){
+        event.preventDefault();
+        thisWidget.setValue(thisWidget.value+0.5);
+      }else{
+        event.preventDefault();
+        thisWidget.setValue(thisWidget.value+1);
+      }
     });
   }
 }

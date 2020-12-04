@@ -180,7 +180,7 @@ class Booking{
     thisBooking.duration=thisBooking.hoursAmount.value;
     const bookingButton=document.querySelector(select.booking.button);
 
-    const openHour= 12;//document.querySelector(settings.hours.open);
+    //const openHour= 12;//document.querySelector(settings.hours.open);
     const closeHour= 24; //document.querySelector(settings.hours.close);
 
     const maxDuration= closeHour-thisBooking.hour;
@@ -200,7 +200,6 @@ class Booking{
         if(
           thisBooking.booked[thisBooking.date][hourBlock]!=='undefined'
           &&
-          
           thisBooking.booked[thisBooking.date][hourBlock].includes(tableId)){
           window.alert('this table is booked already');
           bookingButton.disabled=true;
