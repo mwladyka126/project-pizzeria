@@ -12,6 +12,7 @@ class Booking{
     thisBooking.initWidgets();
     thisBooking.getData();
     thisBooking.selectTable();
+    thisBooking.wrongReservation();
   }
   getData(){
     const thisBooking=this;
@@ -145,7 +146,6 @@ class Booking{
       }
     }
   }
-
   selectTable(){
     const thisBooking=this;
     
@@ -171,6 +171,42 @@ class Booking{
         alert('not availabe');
       }
     }
+  }
+  wrongReservation(){
+    const thisBooking=this;
+
+    thisBooking.date=thisBooking.datePicker.value;
+    thisBooking.hour= utils.hourToNumber(thisBooking.hourPicker.value);
+    thisBooking.duration=thisBooking.hoursAmount.value;
+    const bookingButton=document.querySelector(select.booking.button);
+
+    const openHour= 12;//document.querySelector(settings.hours.open);
+    const closeHour= 24; //document.querySelector(settings.hours.close);
+
+    const maxDuration= closeHour-thisBooking.hour;
+
+    if (thisBooking.duration>maxDuration){
+      bookingButton.disabled=true;
+      window.alert ('we are closing at 24');
+    }
+    
+    for(let table of thisBooking.dom.tables){
+      let tableId = table.getAttribute(settings.booking.tableIdAttribute);
+      if (!isNaN(tableId)){
+        tableId=parseInt(tableId);
+      }
+      for(let hourBlock=thisBooking.hour; hourBlock < thisBooking.hour + thisBooking.duration; hourBlock+=0.5){
+      
+        if(
+          thisBooking.booked[thisBooking.date][hourBlock]!=='undefined'
+          &&
+          
+          thisBooking.booked[thisBooking.date][hourBlock].includes(tableId)){
+          window.alert('this table is booked already');
+          bookingButton.disabled=true;
+        }
+      }
+    }  
   }
 
   sendOrder(){

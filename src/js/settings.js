@@ -67,11 +67,13 @@ export const select = {
     phone: '.order-confirmation [name="phone"]',
     address: '.order-confirmation [name="address"]',
     form: '.booking-form',
+    button: '.order-confirmation button',
   },
   nav: {
     links: '.main-nav a',
     buttons: '.link-wrapper a',
   },
+  slider: '.rangeSlider',
 };
   
 
