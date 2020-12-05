@@ -20,7 +20,9 @@ class AmountWidget extends BaseWidget{
     thisWidget.dom.linkDecrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkDecrease);
     thisWidget.dom.linkIncrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkIncrease);
   }
-
+  parseValue(value){
+    return parseFloat(value);
+  }
   isValid(value){
     return !isNaN(value)
     && value>=settings.amountWidget.defaultMin
@@ -40,23 +42,19 @@ class AmountWidget extends BaseWidget{
       thisWidget.value =thisWidget.dom.input.value;
     });
 
-    thisWidget.dom.linkDecrease.addEventListener('click', function(event){
+    thisWidget.dom.linkDecrease.addEventListener('click', function(event){ event.preventDefault();
       if (thisWidget.dom.linkDecrease.classList.contains('hours')){
-        event.preventDefault();
         thisWidget.setValue(thisWidget.value-0.5);
       }else{
-        event.preventDefault();
         thisWidget.setValue(thisWidget.value-1);
       }
 
     });
 
-    thisWidget.dom.linkIncrease.addEventListener('click', function(event){
+    thisWidget.dom.linkIncrease.addEventListener('click', function(event){ event.preventDefault();
       if (thisWidget.dom.linkDecrease.classList.contains('hours')){
-        event.preventDefault();
         thisWidget.setValue(thisWidget.value+0.5);
       }else{
-        event.preventDefault();
         thisWidget.setValue(thisWidget.value+1);
       }
     });
