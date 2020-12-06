@@ -196,14 +196,16 @@ class Booking{
 
       bookingButton.disabled=false;
 
-      for(let hourBlock=thisBooking.hour; hourBlock < thisBooking.hour + thisBooking.duration; hourBlock+=0.5){
+      bookingButton.addEventListener('click', function(){
+        for(let hourBlock=thisBooking.hour; hourBlock < thisBooking.hour + thisBooking.duration; hourBlock+=0.5){
       
-        if(
-          thisBooking[thisBooking.date][hourBlock].includes(tableId)){
-          window.alert('this table is booked already');
-          bookingButton.disabled=true;
+          if(
+            thisBooking[thisBooking.date][hourBlock].includes(tableId)){
+            window.alert('this table is booked already');
+            bookingButton.disabled=true;
+          }
         }
-      }
+      });
     }  
   }
 
@@ -282,6 +284,7 @@ class Booking{
     thisBooking.dom.form.addEventListener('submit',function(){
       event.preventDefault();
       thisBooking.sendOrder();
+      thisBooking.wrongReservation();
     });
   }   
 }
