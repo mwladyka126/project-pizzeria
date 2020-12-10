@@ -196,7 +196,7 @@ class Booking{
 
       bookingButton.disabled=false;
 
-      bookingButton.addEventListener('click', function(){
+      table.addEventListener('click', function(){
         for(let hourBlock=thisBooking.hour; hourBlock < thisBooking.hour + thisBooking.duration; hourBlock+=0.5){
       
           if(
