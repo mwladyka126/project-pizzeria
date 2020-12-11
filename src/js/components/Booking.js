@@ -164,14 +164,35 @@ class Booking{
             tableId= parseInt(tableId);
           }
           thisBooking.clickedTable=tableId;
+          thisBooking.checkAvailability(tableId);
         });        
-      }else{
-        alert('not availabe');
-        thisBooking.wrongReservation();
       }
     }
   }
-  wrongReservation(){
+
+  checkAvailability(tableId){
+    const thisBooking =this;
+    
+    thisBooking.date=thisBooking.datePicker.value;
+    thisBooking.hour= utils.hourToNumber(thisBooking.hourPicker.value);
+    const closeHour= settings.hours.close;
+
+    let maxHour= 0;
+
+    for(let hourBlock=thisBooking.hour; hourBlock < closeHour; hourBlock+=0.5){
+      if(
+        typeof thisBooking.booked[thisBooking.date] ==='undefined'||
+        typeof thisBooking.booked[hourBlock] ==='undefined'||
+        !thisBooking.booked[thisBooking.date][hourBlock].includes(tableId)
+      ){
+        maxHour += 0.5;
+      }else{
+        break;
+      }
+    }
+    thisBooking.hoursAmount.setMaxValue(maxHour);
+  }
+  /*wrongReservation(){
     const thisBooking=this;
 
     thisBooking.date=thisBooking.datePicker.value;
@@ -207,7 +228,7 @@ class Booking{
         }
       });
     }  
-  }
+  } */
 
   sendOrder(){
     const thisBooking =this;
@@ -246,7 +267,6 @@ class Booking{
       .then(function(parsedResponse){
         console.log('parsedResponse',parsedResponse);
         thisBooking.getData();
-        thisBooking.wrongReservation();
       });
   }
 
@@ -284,7 +304,6 @@ class Booking{
     thisBooking.dom.form.addEventListener('submit',function(){
       event.preventDefault();
       thisBooking.sendOrder();
-      thisBooking.wrongReservation();
     });
   }   
 }
