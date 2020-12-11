@@ -25,9 +25,10 @@ class AmountWidget extends BaseWidget{
     return parseFloat(value);
   }
   isValid(value){
+    const thisWidget=this;
     return !isNaN(value)
     && value>=settings.amountWidget.defaultMin
-     && value<=settings.amountWidget.defaultMax;
+     && value<=thisWidget.newMaxValue;
   }
   setMaxValue(newMaxValue) {
     const thisWidget = this;

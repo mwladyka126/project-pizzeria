@@ -176,7 +176,7 @@ class Booking{
     thisBooking.date=thisBooking.datePicker.value;
     thisBooking.hour= utils.hourToNumber(thisBooking.hourPicker.value);
     const closeHour= settings.hours.close;
-
+    thisBooking.duration=thisBooking.hoursAmount.value;
     let maxHour= 0;
 
     for(let hourBlock=thisBooking.hour; hourBlock < closeHour; hourBlock+=0.5){
