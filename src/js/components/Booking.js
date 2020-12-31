@@ -125,6 +125,7 @@ class Booking{
       typeof thisBooking.booked[thisBooking.date][thisBooking.hour] == 'undefined'
     ){
       allAvailable = true;      
+      thisBooking.hoursAmount.resetMaxValueToDefault();
     }
 
     for(let table of thisBooking.dom.tables){
@@ -154,7 +155,7 @@ class Booking{
         !table.classList.contains(classNames.booking.tableBooked)
         &&
         !table.classList.contains(classNames.booking.tableClicked)
-      ){     
+      ){  // thisBooking.hoursAmount.resetMaxValueToDefault();  
         table.addEventListener('click',function(){
           table.classList.add(classNames.booking.tableClicked);
           table.classList.toggle(classNames.booking.tableBooked);
@@ -182,7 +183,7 @@ class Booking{
     for(let hourBlock=thisBooking.hour; hourBlock < closeHour; hourBlock+=0.5){
       if(
         typeof thisBooking.booked[thisBooking.date] ==='undefined'||
-        typeof thisBooking.booked[hourBlock] ==='undefined'||
+        typeof thisBooking.booked[thisBooking.date][hourBlock] ==='undefined'||
         !thisBooking.booked[thisBooking.date][hourBlock].includes(tableId)
       ){
         maxHour += 0.5;

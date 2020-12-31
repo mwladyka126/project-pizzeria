@@ -28,7 +28,7 @@ class AmountWidget extends BaseWidget{
     const thisWidget=this;
     return !isNaN(value)
     && value>=settings.amountWidget.defaultMin
-     && value<=thisWidget.newMaxValue;
+     && value<=thisWidget.maxValue;
   }
   setMaxValue(newMaxValue) {
     const thisWidget = this;

@@ -110,20 +110,17 @@ class Product {
     const thisProduct = this;
     
     /* read all data from the form (using utils.serializeFormToObject) and save it to const formData */
-
     const formData = utils.serializeFormToObject(thisProduct.form);
-    //console.log('formData', formData);
+  
     thisProduct.params ={};
     /* set variable price to equal thisProduct.data.price */
     let price = thisProduct.data.price;
-    //console.log (price);
 
     /* START LOOP: for each paramId in thisProduct.data.params */
     for (let paramId in thisProduct.data.params){
-      const param = thisProduct.data.params[paramId];
-      //console.log(param);
-      
+         
       /* save the element in thisProduct.data.params with key paramId as const param */
+      const param = thisProduct.data.params[paramId];
       
       /* START LOOP: for each optionId in param.options */
       for (let optionId in param.options){
@@ -159,8 +156,9 @@ class Product {
             img.classList.add(classNames.menuProduct.imageVisible);
           }  
         } else {
-          for (let img of optionImages)
+          for (let img of optionImages){
             img.classList.remove(classNames.menuProduct.imageVisible);
+          }
         }
       }
       /* END ELSE IF: if option is not selected and option is default */
