@@ -151,14 +151,14 @@ class Booking{
     const tables=thisBooking.dom.tables;
 
     for (let table of tables){
-      if (
-        !table.classList.contains(classNames.booking.tableBooked)
-        &&
-        !table.classList.contains(classNames.booking.tableClicked)
-      ){  // thisBooking.hoursAmount.resetMaxValueToDefault();  
-        table.addEventListener('click',function(){
+      table.addEventListener('click',function(){
+        if (
+          !table.classList.contains(classNames.booking.tableBooked)
+        //&&
+        //!table.classList.contains(classNames.booking.tableClicked)
+        ){ 
           table.classList.add(classNames.booking.tableClicked);
-          table.classList.toggle(classNames.booking.tableBooked);
+          //table.classList.toggle(classNames.booking.tableBooked);
           
           let tableId = table.getAttribute(settings.booking.tableIdAttribute);
           if (!isNaN(tableId)){
@@ -166,8 +166,9 @@ class Booking{
           }
           thisBooking.clickedTable=tableId;
           thisBooking.checkAvailability(tableId);
-        });        
-      }
+        }             
+      });        
+    
     }
   }
 
@@ -193,44 +194,7 @@ class Booking{
     }
     thisBooking.hoursAmount.setMaxValue(maxHour);
   }
-  /*wrongReservation(){
-    const thisBooking=this;
-
-    thisBooking.date=thisBooking.datePicker.value;
-    thisBooking.hour= utils.hourToNumber(thisBooking.hourPicker.value);
-    thisBooking.duration=thisBooking.hoursAmount.value;
-    const bookingButton=document.querySelector(select.booking.button);
-
-    const closeHour= 24; //document.querySelector(settings.hours.close);
-
-    thisBooking.maxDuration= closeHour-thisBooking.hour;
-
-    for(let table of thisBooking.dom.tables){
-      let tableId = table.getAttribute(settings.booking.tableIdAttribute);
-      if (!isNaN(tableId)){
-        tableId= parseInt(tableId);
-      }
-      if (thisBooking.duration>thisBooking.maxDuration){
-        window.alert ('we are closing at 24');
-        bookingButton.disabled=true;
-        table.classList.remove(classNames.booking.tableClicked);
-      }
-
-      bookingButton.disabled=false;
-
-      table.addEventListener('click', function(){
-        for(let hourBlock=thisBooking.hour; hourBlock < thisBooking.hour + thisBooking.duration; hourBlock+=0.5){
-      
-          if(
-            thisBooking[thisBooking.date][hourBlock].includes(tableId)){
-            window.alert('this table is booked already');
-            bookingButton.disabled=true;
-          }
-        }
-      });
-    }  
-  } */
-
+  
   sendOrder(){
     const thisBooking =this;
 

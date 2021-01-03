@@ -156,7 +156,11 @@
       }
   
     }
-  
+
+    &.clicked{
+      color: red;
+    }
+
     &.booked {
       cursor: not-allowed;
       color: lighten($color-dark, 40%);
@@ -170,7 +174,7 @@
         top: 0;
         background: $color-dark;
         opacity: 0.4;
-      }
+      }  
   
     }
   }
