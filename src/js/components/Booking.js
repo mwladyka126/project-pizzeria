@@ -148,11 +148,15 @@ class Booking{
   }
   selectTable(){
     const thisBooking=this;
+    const bookingButton=document.querySelector(select.booking.button);
+    bookingButton.disabled=true;
+
     
     const tables=thisBooking.dom.tables;
 
     for (let table of tables){
       table.addEventListener('click',function(){
+        bookingButton.disabled=false;
         if (
           !table.classList.contains(classNames.booking.tableBooked)       
         ){ 
@@ -194,7 +198,7 @@ class Booking{
   
   sendOrder(){
     const thisBooking =this;
-
+    
     const url= settings.db.url + '/' + settings.db.booking;
     const booking ={
       date: thisBooking.datePicker.value,
@@ -212,8 +216,7 @@ class Booking{
         booking.starters.push[starter.value];
       }
     }
-
-    
+       
     const options = {
       method: 'POST',
       headers: {
