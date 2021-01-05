@@ -203,7 +203,7 @@ class Booking{
     const booking ={
       date: thisBooking.datePicker.value,
       hour: thisBooking.hourPicker.value,
-      table:[],
+      table:thisBooking.clickedTable,
       duration:thisBooking.hoursAmount.value,
       people:thisBooking.peopleAmount.value,
       starters:[],
@@ -216,21 +216,11 @@ class Booking{
         booking.starters.push[starter.value];
       }
     }
-       
-    for (let table of thisBooking.dom.tables) {
-      const clickedTable = table.classList.contains(
-        classNames.booking.tableClicked
-      );
-      if (clickedTable) {
-        thisBooking.tableId = table.getAttribute(
-          settings.booking.tableIdAttribute
-        );
-        thisBooking.tableId = parseInt(thisBooking.tableId);
 
-        booking.table.push(thisBooking.tableId);
-        //console.log(thisBooking.tableId);
-      }
-    }
+    const bookedTable= thisBooking.dom.wrapper.querySelector(select.booking.tables+'[data-table="'+thisBooking.clickedTable+'"]');
+    
+    bookedTable.classList.remove('clicked');
+     
 
     const options = {
       method: 'POST',
